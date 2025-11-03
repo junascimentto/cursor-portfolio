@@ -27,7 +27,7 @@ const workSans = Work_Sans({
   weight: ["400", "500", "700"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://julianascimento.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://julianascimento.design";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

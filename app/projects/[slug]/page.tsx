@@ -8,7 +8,7 @@ interface ProjectPageProps {
   params: Promise<{ slug: string }>;
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://julianascimento.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://julianascimento.design";
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
