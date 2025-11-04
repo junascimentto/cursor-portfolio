@@ -118,3 +118,17 @@ body {
 
 /* Global sharp corners for containers - Tailwind rounded utilities are disabled via theme */
 /* Keep rounded-full for circular elements (avatars, icons) - they explicitly use rounded-full class */
+
+/* Video zoom-in animation */
+@keyframes videoZoomIn {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.video-zoom-in {
+  animation: videoZoomIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

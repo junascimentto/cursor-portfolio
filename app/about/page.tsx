@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <div className="min-h-screen px-6 md:px-16 py-32 md:py-40">
@@ -21,8 +23,14 @@ export default function About() {
               Julia Nascimento
             </h1>
             
-            <div className="w-[57.47px] h-[57.47px] rounded-full bg-gray-300 overflow-hidden">
-              {/* Add actual avatar image */}
+            <div className="w-[57.47px] h-[57.47px] rounded-full overflow-hidden relative">
+              <Image
+                src="/avatar/avatar-julia.png"
+                alt="Julia Nascimento"
+                fill
+                className="object-cover"
+                sizes="57.47px"
+              />
             </div>
 
             {/* About Me Text */}

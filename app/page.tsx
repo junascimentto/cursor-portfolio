@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { projects } from "@/data/projects";
 import { communityProjects } from "@/data/communityProjects";
 import { personalProjects } from "@/data/personalProjects";
@@ -11,14 +12,26 @@ export default function Home() {
   return (
     <div className="w-full bg-white">
       {/* Video Header Section */}
-      <section className="w-full bg-[#EBEBEB] pt-24 pb-10">
-        <div className="max-w-[1728px] mx-auto px-6 md:px-16">
-          <div className="w-full h-[400px] md:h-[500px] flex items-start p-6 md:p-10 bg-[#EBEBEB]">
-            {/* Placeholder for video - you'll add actual video component */}
-            <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-              <p className="text-[#A2A2A2] text-xl">Video Header</p>
-            </div>
-          </div>
+      <section className="w-full bg-[#EBEBEB] pb-10">
+        <div className="w-full h-[360px] sm:h-[450px] md:h-[540px] lg:h-[630px] xl:h-[720px] relative bg-[#EBEBEB] flex items-center justify-center">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-contain video-zoom-in"
+          >
+            <source src="/videos/hero-video-openai.mov" type="video/quicktime" />
+            <source src="/videos/hero-video-openai.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          {/* Subtle link to OpenAI widget project */}
+          <Link 
+            href="/projects/openai-widget"
+            className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 text-body-small text-[#6D6A7D] opacity-50 hover:opacity-100 transition-opacity duration-200 underline decoration-[#6D6A7D] decoration-1 underline-offset-2 z-10"
+          >
+            View project →
+          </Link>
         </div>
       </section>
 
@@ -91,36 +104,36 @@ export default function Home() {
 
             {/* Sidebar - Metadata */}
             <FadeIn delay={0.4}>
-              <div className="w-full lg:w-[40%] flex flex-col items-start lg:items-start gap-8 lg:pt-20">
+              <div className="w-full lg:w-[40%] flex flex-col items-start lg:items-start gap-12 lg:pt-16">
                 {/* Location */}
-                <div className="flex flex-row items-start gap-4 w-full">
-                  <div className="flex-shrink-0 pt-1">
+                <div className="flex flex-row items-start gap-5 w-full">
+                  <div className="flex-shrink-0 mt-0.5">
                     <MetadataIcon type="location" />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-body-regular text-[#FB7759] leading-relaxed">In Amsterdam</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-body-regular text-[#FB7759] leading-relaxed mb-1">In Amsterdam</p>
                     <p className="text-body-regular text-[#211814] leading-relaxed">From Brasil</p>
                   </div>
                 </div>
 
                 {/* Experience */}
-                <div className="flex flex-row items-start gap-4 w-full">
-                  <div className="flex-shrink-0 pt-1">
+                <div className="flex flex-row items-start gap-5 w-full">
+                  <div className="flex-shrink-0 mt-0.5">
                     <MetadataIcon type="experience" />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-body-regular text-[#549082] leading-relaxed">7 years experience</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-body-regular text-[#549082] leading-relaxed mb-1">7 years experience</p>
                     <p className="text-body-regular text-[#211814] leading-relaxed">Designed and launched 14+ products,</p>
                   </div>
                 </div>
 
                 {/* Domains */}
-                <div className="flex flex-row items-start gap-4 w-full">
-                  <div className="flex-shrink-0 pt-1">
+                <div className="flex flex-row items-start gap-5 w-full">
+                  <div className="flex-shrink-0 mt-0.5">
                     <MetadataIcon type="domains" />
                   </div>
-                  <div className="flex-1">
-                    <p className="text-body-regular text-[#549082] leading-relaxed">Payments, Financial</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-body-regular text-[#549082] leading-relaxed mb-1">Payments, Financial</p>
                     <p className="text-body-regular text-[#211814] leading-relaxed">Enterprise, AI, Highly regulated industries.</p>
                   </div>
                 </div>
@@ -128,45 +141,128 @@ export default function Home() {
             </FadeIn>
           </div>
 
-          {/* Designed For */}
+          {/* Designed With */}
           <FadeInUp delay={0.5}>
             <div className="w-full flex flex-col gap-4 mt-24 lg:mt-32">
-              <p className="text-heading-2 text-[#E75C3B]">DESIGNED FOR</p>
-              <div className="flex flex-row flex-wrap items-center gap-8 md:gap-12 lg:gap-16">
-                {/* Add company logos here */}
-                <div className="w-full sm:w-[200px] md:w-[250px] lg:w-[300px] h-[60px] md:h-[80px] lg:h-[97px] bg-gray-200 flex items-center justify-center">
-                  <span className="text-[#A2A2A2] text-sm">Logo 1</span>
+              <p className="text-heading-2 text-[#E75C3B]">DESIGNED WITH</p>
+              <div className="flex flex-row flex-wrap items-center gap-6 md:gap-8 lg:gap-10">
+                {/* Company Logos - Smaller, uniform sizes, luminosity blend, transparent background */}
+                <div className="w-[120px] md:w-[140px] lg:w-[160px] h-[40px] md:h-[45px] lg:h-[50px] relative flex items-center justify-center">
+                  <Image
+                    src="/logos/booking.svg"
+                    alt="Booking.com"
+                    fill
+                    className="object-contain mix-blend-luminosity opacity-60"
+                    sizes="(max-width: 640px) 120px, (max-width: 768px) 140px, 160px"
+                  />
                 </div>
-                <div className="w-full sm:w-[180px] md:w-[200px] lg:w-[231px] h-[50px] md:h-[55px] lg:h-[63px] bg-gray-200 flex items-center justify-center">
-                  <span className="text-[#A2A2A2] text-sm">Logo 2</span>
+                <div className="w-[120px] md:w-[140px] lg:w-[160px] h-[40px] md:h-[45px] lg:h-[50px] relative flex items-center justify-center">
+                  <Image
+                    src="/logos/openai.svg"
+                    alt="OpenAI"
+                    fill
+                    className="object-contain mix-blend-luminosity opacity-60"
+                    sizes="(max-width: 640px) 120px, (max-width: 768px) 140px, 160px"
+                  />
                 </div>
-                <div className="w-full sm:w-[220px] md:w-[280px] lg:w-[358px] h-[55px] md:h-[75px] lg:h-[91px] bg-gray-200 flex items-center justify-center">
-                  <span className="text-[#A2A2A2] text-sm">Logo 3</span>
+                <div className="w-[120px] md:w-[140px] lg:w-[160px] h-[40px] md:h-[45px] lg:h-[50px] relative flex items-center justify-center">
+                  <Image
+                    src="/logos/klm.svg"
+                    alt="KLM"
+                    fill
+                    className="object-contain mix-blend-luminosity opacity-60"
+                    sizes="(max-width: 640px) 120px, (max-width: 768px) 140px, 160px"
+                  />
                 </div>
-                <div className="w-full sm:w-[200px] md:w-[220px] lg:w-[251px] h-[35px] md:h-[37px] lg:h-[39px] bg-gray-200 flex items-center justify-center">
-                  <span className="text-[#A2A2A2] text-sm">Logo 4</span>
+                <div className="w-[120px] md:w-[140px] lg:w-[160px] h-[40px] md:h-[45px] lg:h-[50px] relative flex items-center justify-center">
+                  <Image
+                    src="/logos/millennium.svg"
+                    alt="Millennium"
+                    fill
+                    className="object-contain mix-blend-luminosity opacity-60"
+                    sizes="(max-width: 640px) 120px, (max-width: 768px) 140px, 160px"
+                  />
                 </div>
-                <div className="w-full sm:w-[120px] md:w-[124px] lg:w-[124px] h-[50px] md:h-[65px] lg:h-[73px] bg-gray-200 flex items-center justify-center">
-                  <span className="text-[#A2A2A2] text-sm">Logo 5</span>
+                <div className="w-[120px] md:w-[140px] lg:w-[160px] h-[40px] md:h-[45px] lg:h-[50px] relative flex items-center justify-center">
+                  <Image
+                    src="/logos/activobank.svg"
+                    alt="ActivoBank"
+                    fill
+                    className="object-contain mix-blend-luminosity opacity-60"
+                    sizes="(max-width: 640px) 120px, (max-width: 768px) 140px, 160px"
+                  />
                 </div>
               </div>
             </div>
           </FadeInUp>
 
-          {/* About Me Content */}
+          {/* About Me Content - Edge to edge */}
           <FadeInUp delay={0.6}>
-            <div className="w-full flex flex-col lg:flex-row items-start gap-8 md:gap-12 lg:gap-16 xl:gap-20 mt-24 lg:mt-32">
-              <div className="w-full lg:w-[55%] xl:w-[50%] flex flex-col gap-4">
-                <p className="text-heading-2 text-[#E75C3B]">ABOUT ME</p>
-                <p className="text-body-large text-[#6D6A7D]">
-                  Figma Community lead Amsterdam and Lisbon Organise every year a Figma Design conference 
-                  for 500+ designers Touch Rugby player on Amsterdam Lowlanders Runner Political book club 
-                  Building an agroforestry in Brazil Medieval cosplay Lived and worked in different countries 
-                  Medium writer about design and figma @julianascimentto
-                </p>
-              </div>
-              <div className="w-full lg:w-[45%] xl:w-[50%] h-[400px] md:h-[600px] lg:h-[500px] xl:h-[849px] bg-gray-200 flex items-center justify-center">
-                <span className="text-[#A2A2A2]">About Image</span>
+            <div className="w-screen -ml-6 md:-ml-16 mr-0 pr-6 md:pr-16">
+              <div className="w-full flex flex-col lg:flex-row items-start gap-12 md:gap-16 lg:gap-20">
+                {/* Text Column - Better proportion */}
+                <div className="w-full lg:w-[55%] xl:w-[58%] flex flex-col items-start gap-6 pl-6 md:pl-16">
+                  <p className="text-heading-2 text-[#E75C3B]">ABOUT ME</p>
+                  <h2 className="text-display-medium font-medium text-[#262626] leading-tight">
+                    Community<br />driven
+                  </h2>
+                  <div className="flex flex-col items-start gap-4 mt-2 w-full">
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Figma Community lead
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Amsterdam and Portugal
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Organise Design conference
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        for 500+ designers
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">//</span> Touch Rugby player on
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Amsterdam Lowlanders
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">//</span> Building an agroforestry in
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Brazil
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Medium writer about design
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        and figma @julianascimentto
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Image Column - Edge to edge, full width */}
+                <div className="w-full lg:w-[45%] xl:w-[42%] lg:sticky lg:top-24 lg:self-start pr-6 md:pr-16 lg:pr-0">
+                  <div className="w-full lg:w-[calc(100%+4rem)] xl:w-[calc(100%+5rem)] aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] relative overflow-hidden">
+                    <Image
+                      src="/about-me-image.png"
+                      alt="About Julia Nascimento"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      priority={false}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </FadeInUp>

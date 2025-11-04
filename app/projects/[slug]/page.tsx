@@ -139,8 +139,81 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
-            {/* Overview Section */}
-            {project.overview && (
+            {/* Problem Framing Section */}
+            {project.problemFraming && (
+              <div className="flex flex-col gap-6">
+                <h2 className="text-heading-2 text-[#262626]">Problem Framing</h2>
+                <div className="max-w-4xl">
+                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                    {project.problemFraming}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Systems Thinking Section */}
+            {project.systemsThinking && (
+              <div className="flex flex-col gap-6">
+                <h2 className="text-heading-2 text-[#262626]">Systems Thinking</h2>
+                <div className="max-w-4xl">
+                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                    {project.systemsThinking}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Collaboration Section */}
+            {project.collaboration && (
+              <div className="flex flex-col gap-6">
+                <h2 className="text-heading-2 text-[#262626]">Collaboration</h2>
+                <div className="max-w-4xl">
+                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                    {project.collaboration}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Impact Section */}
+            {project.impact && (
+              <div className="flex flex-col gap-6">
+                <h2 className="text-heading-2 text-[#262626]">Impact</h2>
+                <div className="max-w-4xl">
+                  {typeof project.impact === "string" ? (
+                    <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                      {project.impact}
+                    </p>
+                  ) : (
+                    <ul className="flex flex-col gap-4">
+                      {project.impact.map((impact, idx) => (
+                        <li key={idx} className="flex items-start gap-4">
+                          <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                          <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
+                            {impact}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Reflection Section */}
+            {project.reflection && (
+              <div className="flex flex-col gap-6">
+                <h2 className="text-heading-2 text-[#262626]">Reflection</h2>
+                <div className="max-w-4xl">
+                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                    {project.reflection}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Legacy: Keep Overview and Role for backward compatibility */}
+            {project.overview && !project.problemFraming && (
               <div className="flex flex-col gap-6">
                 <h2 className="text-heading-2 text-[#262626]">Overview</h2>
                 <div className="max-w-4xl">
@@ -151,8 +224,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             )}
 
-            {/* Role Section */}
-            {project.role && (
+            {project.role && !project.collaboration && (
               <div className="flex flex-col gap-6">
                 <h2 className="text-heading-2 text-[#262626]">My Role</h2>
                 <div className="max-w-4xl">
@@ -163,8 +235,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             )}
 
-            {/* Outcomes Section */}
-            {project.outcomes && project.outcomes.length > 0 && (
+            {/* Legacy: Keep Outcomes for backward compatibility if Impact not provided */}
+            {project.outcomes && project.outcomes.length > 0 && !project.impact && (
               <div className="flex flex-col gap-6">
                 <h2 className="text-heading-2 text-[#262626]">Outcomes</h2>
                 <div className="max-w-4xl">

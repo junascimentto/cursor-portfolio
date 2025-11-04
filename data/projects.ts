@@ -10,6 +10,12 @@ export interface Project {
   outcomes?: string[];
   highlight?: string;
   bgColor?: string;
+  // New structured sections
+  problemFraming?: string;
+  systemsThinking?: string;
+  collaboration?: string;
+  impact?: string | string[]; // Can be single string or array of impact points
+  reflection?: string;
 }
 
 export const projects: Project[] = [
@@ -18,8 +24,8 @@ export const projects: Project[] = [
     title: "OpenAI widget user experience ownership",
     description: "2.5K search requests per hour on launch",
     tags: ["AI/ML", "Enterprise", "Widget"],
-    image: "/projects/openai-widget.jpg",
-    heroImage: "/projects/openai-widget-hero.jpg",
+    image: "/projects/open-ai-thumb.png",
+    heroImage: "/projects/open-ai-thumb.png",
     overview: "Led the design and user experience for an OpenAI-powered search widget integrated into enterprise products. The widget enables users to perform intelligent searches across multiple data sources with natural language queries.",
     role: "Product Designer - Owned end-to-end UX design, user research, and design system integration",
     outcomes: [
@@ -35,8 +41,8 @@ export const projects: Project[] = [
     title: "Vision & new product strategy - B.com Enterprise White label AI Builder",
     description: "Strategic product vision and design for enterprise AI tools",
     tags: ["AI/ML", "Enterprise", "White Label", "Strategy"],
-    image: "/projects/ai-builder.jpg",
-    heroImage: "/projects/ai-builder-hero.jpg",
+    image: "/projects/white-label-thumb.png",
+    heroImage: "/projects/white-label-thumb.png",
     overview: "Developed product strategy and vision for a white-label AI builder platform that allows enterprise clients to customize and deploy AI solutions. Focused on creating scalable design patterns and intuitive workflows.",
     role: "Product Designer - Led product strategy, vision design, and user journey mapping",
     outcomes: [
@@ -52,8 +58,8 @@ export const projects: Project[] = [
     title: "Invoices - From 5 days to 1 day invoices approval time",
     description: "Streamlined invoice approval workflow",
     tags: ["Finance", "Workflow", "Enterprise"],
-    image: "/projects/invoices.jpg",
-    heroImage: "/projects/invoices-hero.jpg",
+    image: "/projects/invoices-thumb.png",
+    heroImage: "/projects/invoices-thumb.png",
     overview: "Redesigned the invoice approval workflow to reduce processing time from 5 days to 1 day. Focused on automation, clear status indicators, and streamlined decision-making processes.",
     role: "Product Designer - End-to-end ownership of invoice workflow redesign",
     outcomes: [
@@ -69,8 +75,8 @@ export const projects: Project[] = [
     title: "User journey end-to-end ownership - 20% increase on App new accounts",
     description: "Complete user journey optimization for mobile app",
     tags: ["Mobile", "User Journey", "Conversion"],
-    image: "/projects/user-journey.jpg",
-    heroImage: "/projects/user-journey-hero.jpg",
+    image: "/projects/open-account-thumb.png",
+    heroImage: "/projects/open-account-thumb.png",
     overview: "Owned the complete user journey from discovery to account creation for the mobile application. Redesigned onboarding flow, improved sign-up process, and optimized conversion funnel.",
     role: "Product Designer - End-to-end user journey ownership and optimization",
     outcomes: [
@@ -232,8 +238,8 @@ export const projects: Project[] = [
     title: "Vision - Dynamic campaign tool: A new experience for partners campaign",
     description: "Dynamic campaign creation tool for partners",
     tags: ["Campaign", "Partners", "Tools"],
-    image: "/projects/campaign.jpg",
-    heroImage: "/projects/campaign-hero.jpg",
+    image: "/projects/dnamic-campaign-thumb.png",
+    heroImage: "/projects/dnamic-campaign-thumb.png",
     overview: "Designed a new dynamic campaign tool that allows partners to create and manage campaigns with ease. Focused on intuitive workflows and real-time preview capabilities.",
     role: "Product Designer - Campaign tool design and partner experience",
     outcomes: [
