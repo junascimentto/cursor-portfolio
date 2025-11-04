@@ -1,102 +1,81 @@
 import Image from "next/image";
+import { FadeInUp } from "@/components/animations";
 
 export default function About() {
   return (
     <div className="min-h-screen px-6 md:px-16 py-32 md:py-40">
       <div className="max-w-[1728px] mx-auto">
-        <div className="w-full flex flex-col items-start gap-16 md:gap-20">
-          <div className="w-[818px] flex flex-col gap-4">
-            <p className="text-heading-2 text-[#E75C3B]">
-              ABOUT ME
-            </p>
-            <p className="text-body-large text-[#6D6A7D]">
-              Figma Community lead Amsterdam and Lisbon Organise every year a Figma Design conference 
-              for 500+ designers Touch Rugby player on Amsterdam Lowlanders Runner Political book club 
-              Building an agroforestry in Brazil Medieval cosplay Lived and worked in different countries 
-              Medium writer about design and figma @julianascimentto
-            </p>
-          </div>
-
-          {/* Avatar and Name Section */}
-          <div className="w-full flex flex-col items-start gap-[34px]">
-            <h1 className="text-display-medium text-[#262626]">
-              Julia Nascimento
-            </h1>
-            
-            <div className="w-[57.47px] h-[57.47px] rounded-full overflow-hidden relative">
-              <Image
-                src="/avatar/avatar-julia.png"
-                alt="Julia Nascimento"
-                fill
-                className="object-cover"
-                sizes="57.47px"
-              />
-            </div>
-
-            {/* About Me Text */}
-            <p className="text-body-large text-[#1A1A1A] max-w-[929.44px]">
-              Hi, I'm Julia Nascimento, (she/her). A systems-oriented designer who brings structure, 
-              and clarity to complex digital ecosystems — designing frameworks for scalable, accessible, 
-              and AI-powered user experiences on B2B2C and enterprise products. Now, I'm a Product Designer 
-              at Booking.com building AI/ML products for LLM's ecosystems and white label products with 
-              a focus on scaling design, experimentation, and design systems.
-            </p>
-
-            {/* Icons List */}
-            <div className="flex flex-col gap-4 mt-8">
-              {/* Location */}
-              <div className="flex flex-row items-center gap-3">
-                <div className="w-[56.72px] h-[58.41px] relative flex-shrink-0">
-                  <div className="absolute inset-0 bg-black rounded-full"></div>
-                  <div className="absolute left-[11.03px] right-[7.88px] top-[8.72px] bottom-[11.87px] bg-[#1D47CD] rounded-full"></div>
+        <div className="w-full flex flex-col items-start gap-32 md:gap-40">
+          {/* About Me Content - Edge to edge */}
+          <FadeInUp delay={0.6}>
+            <div className="w-screen -ml-6 md:-ml-16 mr-0 pr-6 md:pr-16">
+              <div className="w-full flex flex-col lg:flex-row items-start gap-12 md:gap-16 lg:gap-20">
+                {/* Text Column - Better proportion */}
+                <div className="w-full lg:w-[55%] xl:w-[58%] flex flex-col items-start gap-6 pl-6 md:pl-16">
+                  <p className="text-heading-2 text-[#E75C3B]">ABOUT ME</p>
+                  <h2 className="text-display-medium font-medium text-[#262626] leading-tight">
+                    Community<br />driven
+                  </h2>
+                  <div className="flex flex-col items-start gap-4 mt-2 w-full">
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Figma Community lead
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Amsterdam and Portugal
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Organise Design conference
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        for 500+ designers
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">//</span> Touch Rugby player on
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Amsterdam Lowlanders
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">//</span> Building an agroforestry in
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Brazil
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Medium writer about design
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        and figma @julianascimentto
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-0">
-                  <p className="text-body-regular text-[#FB7759]">In Amsterdam</p>
-                  <p className="text-body-regular text-[#211814]">From Brasil</p>
-                </div>
-              </div>
-
-              {/* Experience */}
-              <div className="flex flex-row items-center gap-3">
-                <div className="w-[56.72px] h-[47.83px] relative flex-shrink-0">
-                  <div className="absolute inset-0 bg-black rounded-full"></div>
-                  <div className="absolute left-[1.58px] right-[-1.58px] top-[-1.29px] bottom-[-7.59px] bg-[#D0FECF]"></div>
-                </div>
-                <div className="flex flex-col gap-0">
-                  <p className="text-body-regular text-[#549082]">7 years experience</p>
-                  <p className="text-body-regular text-[#211814]">Designed and launched 14+ products,</p>
-                </div>
-              </div>
-
-              {/* Domains */}
-              <div className="flex flex-row items-center gap-3">
-                <div className="w-[59.87px] h-[59.87px] relative flex-shrink-0">
-                  <div className="absolute inset-0 bg-black rounded-full"></div>
-                  <div className="absolute inset-[6.3px] bg-[#FB7759]"></div>
-                </div>
-                <div className="flex flex-col gap-0">
-                  <p className="text-body-regular text-[#549082]">Payments, Financial</p>
-                  <p className="text-body-regular text-[#211814]">Enterprise, AI, Highly regulated industries.</p>
+                
+                {/* Image Column - Edge to edge, full width */}
+                <div className="w-full lg:w-[45%] xl:w-[42%] lg:sticky lg:top-24 lg:self-start pr-6 md:pr-16 lg:pr-0">
+                  <div className="w-full lg:w-[calc(100%+4rem)] xl:w-[calc(100%+5rem)] aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] relative overflow-hidden">
+                    <Image
+                      src="/about-me-image.png"
+                      alt="About Julia Nascimento"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      priority={false}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Role Information */}
-            <div className="w-full flex flex-row items-start gap-16 md:gap-20 mt-12">
-              <div className="flex-1 flex flex-col gap-2">
-                <p className="text-body-regular text-[#A2A2A2]">Booking.com</p>
-                <p className="text-body-regular text-[#A2A2A2]">2022 - 2025</p>
-                <p className="text-heading-3 text-black">My role Product Designer</p>
-              </div>
-
-              <div className="flex-1 flex flex-col gap-3">
-                <p className="text-heading-3 text-black">Teams</p>
-                <p className="text-body-regular text-black">
-                  Partner Invoices, White Label, Strategic Partnerships, OpenAI widget, Design System
-                </p>
-              </div>
-            </div>
-          </div>
+          </FadeInUp>
         </div>
       </div>
     </div>

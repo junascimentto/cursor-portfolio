@@ -16,13 +16,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
           style={{ backgroundColor: project.bgColor || "#DAEFFF", borderRadius: 0 }}
         >
           {project.image && project.image.startsWith("/") ? (
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 403px"
-            />
+            <div className="relative w-[70%] h-[70%] max-w-[280px] max-h-[260px]">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-contain group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 640px) 70vw, (max-width: 768px) 280px, (max-width: 1024px) 280px, 280px"
+              />
+            </div>
           ) : (
             <span className="text-[#A2A2A2] text-body-small">Project Image</span>
           )}
@@ -30,14 +32,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
         
         {/* Project Content */}
         <div className="flex flex-col gap-2">
-          <p className="text-body-large font-bold text-black group-hover:text-[#E75C3B] transition-colors">
-            {project.title}
-          </p>
-          {project.highlight && (
-            <p className="text-body-large font-medium text-[#E75C3B]">
-              {project.highlight}
-            </p>
-          )}
+          {(() => {
+            const titleParts = project.title.split(" - ");
+            const projectTitle = titleParts[0];
+            const role = titleParts[1];
+            
+            return (
+              <>
+                <p className="text-body-large font-bold text-black group-hover:text-[#E75C3B] transition-colors">
+                  {projectTitle}
+                </p>
+                {role && (
+                  <p className="text-body-regular text-[#6D6A7D]">
+                    {role}
+                  </p>
+                )}
+              </>
+            );
+          })()}
           {project.description && (
             <p className="text-body-regular text-[#6D6A7D]">
               {project.description}

@@ -11,34 +11,96 @@ export interface Project {
   highlight?: string;
   bgColor?: string;
   // New structured sections
+  scenario?: string;
+  team?: {
+    description: string;
+    members?: Array<{
+      name: string;
+      avatar?: string;
+    }>;
+    count?: number; // Additional team members count (e.g., 14 for "+14")
+  };
   problemFraming?: string;
   systemsThinking?: string;
   collaboration?: string;
   impact?: string | string[]; // Can be single string or array of impact points
+  metrics?: string[]; // Array of metric achievements
+  results?: {
+    title: string;
+    metrics: Array<{
+      value: string;
+      label: string;
+      description?: string;
+    }>;
+  };
   reflection?: string;
+  // Project metadata
+  completedDate?: string; // Format: "January 2024" or "2024-01"
+  context?: string[]; // B2B, Consumer, AI, Mobile
+  company?: string; // Which company the project was for
 }
 
 export const projects: Project[] = [
   {
     slug: "openai-widget",
-    title: "OpenAI widget user experience ownership",
+    title: "OpenAI Search Widget - Lead UX Designer",
     description: "2.5K search requests per hour on launch",
     tags: ["AI/ML", "Enterprise", "Widget"],
     image: "/projects/open-ai-thumb.png",
-    heroImage: "/projects/open-ai-thumb.png",
+    heroImage: "/projects/open-ai-hero.png",
+    completedDate: "September 2025",
     overview: "Led the design and user experience for an OpenAI-powered search widget integrated into enterprise products. The widget enables users to perform intelligent searches across multiple data sources with natural language queries.",
     role: "Product Designer - Owned end-to-end UX design, user research, and design system integration",
+    scenario: "OpenAI is launching apps in an event. Booking.com is one of the showcased partners. The project deadline: 4 weeks",
+    team: {
+      description: "1 Designer, 2 Product Managers, FE and BE developers, Booking Holdings VP leadership, external stakeholders",
+      count: 14,
+      members: [
+        {
+          name: "Julia Nascimento",
+          avatar: "/avatar/avatar-julia.png"
+        }
+      ]
+    },
     outcomes: [
       "2.5K search requests per hour on launch day",
       "40% increase in user engagement with search functionality",
       "Reduced search time from 3 minutes to 30 seconds average"
     ],
+    results: {
+      title: "FIRST 10 DAYS RESULTS",
+      metrics: [
+        {
+          value: "World*",
+          label: "Available",
+          description: "With direct invocation Except EEA, UK and Switzerland"
+        },
+        {
+          value: "40k",
+          label: "Responses",
+          description: "Correct responses from MCP"
+        },
+        {
+          value: "12%",
+          label: "CTR"
+        },
+        {
+          value: "4800",
+          label: "Clicks",
+          description: "from chatGPT to Booking.com"
+        },
+        {
+          value: "4%",
+          label: "CR (Look > book)"
+        }
+      ]
+    },
     highlight: "HIGHLIGHT",
     bgColor: "#DAEFFF",
   },
   {
     slug: "white-label-ai-builder",
-    title: "Vision & new product strategy - B.com Enterprise White label AI Builder",
+    title: "White Label AI Builder - Product Strategy Lead",
     description: "Strategic product vision and design for enterprise AI tools",
     tags: ["AI/ML", "Enterprise", "White Label", "Strategy"],
     image: "/projects/white-label-thumb.png",
@@ -50,13 +112,13 @@ export const projects: Project[] = [
       "100% adoption rate by initial enterprise clients",
       "Scalable design system supporting 10+ white-label variations"
     ],
-    highlight: "OPEN",
+    highlight: "HIGHLIGHT",
     bgColor: "#DAEFFF",
   },
   {
     slug: "invoices",
-    title: "Invoices - From 5 days to 1 day invoices approval time",
-    description: "Streamlined invoice approval workflow",
+    title: "Finance Tool end-to-end UX vision",
+    description: "Reduced error 30%. Approval of invoices 60% faster.",
     tags: ["Finance", "Workflow", "Enterprise"],
     image: "/projects/invoices-thumb.png",
     heroImage: "/projects/invoices-thumb.png",
@@ -67,13 +129,19 @@ export const projects: Project[] = [
       "60% decrease in pending invoices",
       "Improved user satisfaction scores by 45%"
     ],
-    highlight: "OPEN",
+    metrics: [
+      "Support tickets about that feature dropped",
+      "Customer complaints stopped.",
+      "Task completion time dropped",
+      "Team feedback"
+    ],
+    highlight: "HIGHLIGHT",
     bgColor: "#F2DCFF",
   },
   {
     slug: "user-journey",
-    title: "User journey end-to-end ownership - 20% increase on App new accounts",
-    description: "Complete user journey optimization for mobile app",
+    title: "Mobile App Onboarding - Increased Accounts 20%",
+    description: "End-to-end user journey redesign",
     tags: ["Mobile", "User Journey", "Conversion"],
     image: "/projects/open-account-thumb.png",
     heroImage: "/projects/open-account-thumb.png",
@@ -89,8 +157,8 @@ export const projects: Project[] = [
   },
   {
     slug: "developers-tool",
-    title: "Developers tool - From 3 months to 3 days activation of sand box for developers",
-    description: "Developer experience optimization and workflow redesign",
+    title: "Developer Sandbox Tool - 99% Faster Activation",
+    description: "3 months → 3 days setup time",
     tags: ["Developer Tools", "Workflow", "Automation"],
     image: "/projects/developers-tool.jpg",
     heroImage: "/projects/developers-tool-hero.jpg",
@@ -106,8 +174,8 @@ export const projects: Project[] = [
   },
   {
     slug: "design-system",
-    title: "Design System - 0-1 Design system libraries in react.js and native launched",
-    description: "Built comprehensive design system from scratch",
+    title: "Design System 0-1 - Lead Designer, React & Native",
+    description: "50+ components, unified 14+ products",
     tags: ["Design System", "React", "Native", "Components"],
     image: "/projects/design-system.jpg",
     heroImage: "/projects/design-system-hero.jpg",
@@ -123,8 +191,8 @@ export const projects: Project[] = [
   },
   {
     slug: "salesforce-features",
-    title: "Sales force features - Design for tooling integration and commercial user experience",
-    description: "Salesforce integration and commercial UX design",
+    title: "Salesforce Integration - Commercial UX Designer",
+    description: "Improved sales workflow efficiency 30%",
     tags: ["Salesforce", "Integration", "Enterprise"],
     image: "/projects/salesforce.jpg",
     heroImage: "/projects/salesforce-hero.jpg",
@@ -139,8 +207,8 @@ export const projects: Project[] = [
   },
   {
     slug: "payments",
-    title: "Payments end-to-end - 30% decrease on incorrect payments",
-    description: "Payment processing workflow optimization",
+    title: "Payment Processing Workflow - Reduced Errors 30%",
+    description: "99.5% payment accuracy achieved",
     tags: ["Payments", "Finance", "Workflow"],
     image: "/projects/payments.jpg",
     heroImage: "/projects/payments-hero.jpg",
@@ -155,8 +223,8 @@ export const projects: Project[] = [
   },
   {
     slug: "vision-activation",
-    title: "Vision - 3 months to 1 week activation of products",
-    description: "Product activation workflow optimization",
+    title: "Product Activation Workflow - 93% Faster",
+    description: "3 months → 1 week activation time",
     tags: ["Product Strategy", "Workflow", "Automation"],
     image: "/projects/vision.jpg",
     heroImage: "/projects/vision-hero.jpg",
@@ -171,8 +239,8 @@ export const projects: Project[] = [
   },
   {
     slug: "product-library",
-    title: "Product library - Launched with white label components - Speed on development",
-    description: "White label component library for faster development",
+    title: "White Label Component Library - Lead Designer",
+    description: "50% faster development, 10+ clients",
     tags: ["Design System", "White Label", "Components"],
     image: "/projects/product-library.jpg",
     heroImage: "/projects/product-library-hero.jpg",
@@ -187,8 +255,8 @@ export const projects: Project[] = [
   },
   {
     slug: "a11y-training",
-    title: "Training teams on A11 - All products accessible - EU act 2025",
-    description: "Accessibility compliance and team training",
+    title: "Accessibility Training Program - Lead A11y Designer",
+    description: "100% WCAG 2.1 AA compliant, 50+ trained",
     tags: ["Accessibility", "A11y", "Compliance", "Training"],
     image: "/projects/a11y.jpg",
     heroImage: "/projects/a11y-hero.jpg",
@@ -203,8 +271,8 @@ export const projects: Project[] = [
   },
   {
     slug: "partnership-awareness",
-    title: "Experiments to improve Partnership awareness",
-    description: "Partnership discovery and awareness optimization",
+    title: "Partnership Discovery - Increased Discovery 25%",
+    description: "Experimentation and UX optimization",
     tags: ["Experimentation", "Partnership", "Discovery"],
     image: "/projects/partnership.jpg",
     heroImage: "/projects/partnership-hero.jpg",
@@ -219,8 +287,8 @@ export const projects: Project[] = [
   },
   {
     slug: "insurance-discovery",
-    title: "Experiments to improve Insurance discovery",
-    description: "Insurance product discovery optimization",
+    title: "Insurance Discovery - Increased Conversion 20%",
+    description: "Product discovery and UX experimentation",
     tags: ["Experimentation", "Insurance", "Discovery"],
     image: "/projects/insurance.jpg",
     heroImage: "/projects/insurance-hero.jpg",
@@ -235,8 +303,8 @@ export const projects: Project[] = [
   },
   {
     slug: "campaign-tool",
-    title: "Vision - Dynamic campaign tool: A new experience for partners campaign",
-    description: "Dynamic campaign creation tool for partners",
+    title: "Dynamic Campaign Tool - Partner Experience Designer",
+    description: "Reduced campaign creation time 60%",
     tags: ["Campaign", "Partners", "Tools"],
     image: "/projects/dnamic-campaign-thumb.png",
     heroImage: "/projects/dnamic-campaign-thumb.png",

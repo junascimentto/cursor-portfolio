@@ -45,31 +45,17 @@ export default function Home() {
             {/* Main Column - Primary Content */}
             <div className="w-full lg:w-[60%] flex flex-col items-start">
               
-              {/* Name */}
+              {/* Hero Statement - Name + Subtitle */}
               <FadeInUp>
-                <h1 className="text-display-medium text-[#262626] mb-8">
-                  Julia Nascimento
-                </h1>
-              </FadeInUp>
-              
-              {/* Avatar */}
-              <FadeInUp delay={0.1}>
-                <div className="w-[57.47px] h-[57.47px] rounded-full bg-gray-300 overflow-hidden flex-shrink-0 mb-16">
-                  {/* Add actual avatar image */}
-                </div>
-              </FadeInUp>
-
-              {/* Bio Text */}
-              <FadeInUp delay={0.2}>
-                <div className="w-full flex flex-col gap-6 mb-16">
-                  <p className="text-body-large text-[#1A1A1A]">
-                    Hi, I'm Julia Nascimento, (she/her). A systems-oriented designer who brings structure, 
-                    and clarity to complex digital ecosystems — designing frameworks for scalable, accessible, 
-                    and AI-powered user experiences on B2B2C and <strong>enterprise</strong> products.
+                <div className="w-full mb-12">
+                  <h1 className="text-display-medium text-[#262626] mb-6">
+                    Julia Nascimento
+                  </h1>
+                  <p className="text-body-large text-[#262626] leading-relaxed max-w-2xl mb-12">
+                    Hi, I'm Julia Nascimento, (she/her). A systems-oriented designer who brings structure, and clarity to complex digital ecosystems — designing frameworks for scalable, accessible, and <strong>AI-powered</strong> user experiences on <strong>B2B2C</strong> and <strong>enterprise products</strong>.
                   </p>
-                  <p className="text-body-large text-[#1A1A1A]">
-                    Now, I'm a Product Designer at Booking.com building <strong>AI/ML products for LLM's ecosystems</strong> and <strong>white label products</strong> with 
-                    a focus on scaling design, experimentation, and design systems.
+                  <p className="text-body-large text-[#262626] leading-relaxed max-w-2xl mb-12">
+                    Now, I'm a Product Designer at <strong>Booking.com</strong> building <strong>AI/ML products for LLM's ecosystems</strong> and <strong>white label products</strong> with a focus on scaling design, experimentation, and <strong>design systems</strong>.
                   </p>
                 </div>
               </FadeInUp>
@@ -102,7 +88,7 @@ export default function Home() {
               </FadeInUp>
             </div>
 
-            {/* Sidebar - Metadata */}
+            {/* Sidebar - Metadata with Keywords */}
             <FadeIn delay={0.4}>
               <div className="w-full lg:w-[40%] flex flex-col items-start lg:items-start gap-12 lg:pt-16">
                 {/* Location */}
@@ -111,7 +97,7 @@ export default function Home() {
                     <MetadataIcon type="location" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-body-regular text-[#FB7759] leading-relaxed mb-1">In Amsterdam</p>
+                    <p className="text-body-regular text-[#FB7759] leading-relaxed mb-1 font-medium">In Amsterdam</p>
                     <p className="text-body-regular text-[#211814] leading-relaxed">From Brasil</p>
                   </div>
                 </div>
@@ -122,19 +108,21 @@ export default function Home() {
                     <MetadataIcon type="experience" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-body-regular text-[#549082] leading-relaxed mb-1">7 years experience</p>
-                    <p className="text-body-regular text-[#211814] leading-relaxed">Designed and launched 14+ products,</p>
+                    <p className="text-body-regular text-[#549082] leading-relaxed mb-1 font-medium">7 years experience</p>
+                    <p className="text-body-regular text-[#211814] leading-relaxed">Designed and launched 14+ products</p>
                   </div>
                 </div>
 
-                {/* Domains */}
+                {/* Domains - Keywords for scanning */}
                 <div className="flex flex-row items-start gap-5 w-full">
                   <div className="flex-shrink-0 mt-0.5">
                     <MetadataIcon type="domains" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-body-regular text-[#549082] leading-relaxed mb-1">Payments, Financial</p>
-                    <p className="text-body-regular text-[#211814] leading-relaxed">Enterprise, AI, Highly regulated industries.</p>
+                    <p className="text-body-regular text-[#549082] leading-relaxed mb-1 font-medium">Payments, Financial</p>
+                    <p className="text-body-regular text-[#211814] leading-relaxed">
+                      Enterprise, AI, Highly regulated industries
+                    </p>
                   </div>
                 </div>
               </div>
@@ -196,80 +184,10 @@ export default function Home() {
             </div>
           </FadeInUp>
 
-          {/* About Me Content - Edge to edge */}
-          <FadeInUp delay={0.6}>
-            <div className="w-screen -ml-6 md:-ml-16 mr-0 pr-6 md:pr-16">
-              <div className="w-full flex flex-col lg:flex-row items-start gap-12 md:gap-16 lg:gap-20">
-                {/* Text Column - Better proportion */}
-                <div className="w-full lg:w-[55%] xl:w-[58%] flex flex-col items-start gap-6 pl-6 md:pl-16">
-                  <p className="text-heading-2 text-[#E75C3B]">ABOUT ME</p>
-                  <h2 className="text-display-medium font-medium text-[#262626] leading-tight">
-                    Community<br />driven
-                  </h2>
-                  <div className="flex flex-col items-start gap-4 mt-2 w-full">
-                    <div className="flex flex-col items-start gap-1 w-full">
-                      <p className="text-body-large text-[#6D6A7D]">
-                        <span className="text-[#262626]">/</span> Figma Community lead
-                      </p>
-                      <p className="text-body-large text-[#6D6A7D] ml-4">
-                        Amsterdam and Portugal
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-start gap-1 w-full">
-                      <p className="text-body-large text-[#6D6A7D]">
-                        <span className="text-[#262626]">/</span> Organise Design conference
-                      </p>
-                      <p className="text-body-large text-[#6D6A7D] ml-4">
-                        for 500+ designers
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-start gap-1 w-full">
-                      <p className="text-body-large text-[#6D6A7D]">
-                        <span className="text-[#262626]">//</span> Touch Rugby player on
-                      </p>
-                      <p className="text-body-large text-[#6D6A7D] ml-4">
-                        Amsterdam Lowlanders
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-start gap-1 w-full">
-                      <p className="text-body-large text-[#6D6A7D]">
-                        <span className="text-[#262626]">//</span> Building an agroforestry in
-                      </p>
-                      <p className="text-body-large text-[#6D6A7D] ml-4">
-                        Brazil
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-start gap-1 w-full">
-                      <p className="text-body-large text-[#6D6A7D]">
-                        <span className="text-[#262626]">/</span> Medium writer about design
-                      </p>
-                      <p className="text-body-large text-[#6D6A7D] ml-4">
-                        and figma @julianascimentto
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Image Column - Edge to edge, full width */}
-                <div className="w-full lg:w-[45%] xl:w-[42%] lg:sticky lg:top-24 lg:self-start pr-6 md:pr-16 lg:pr-0">
-                  <div className="w-full lg:w-[calc(100%+4rem)] xl:w-[calc(100%+5rem)] aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] relative overflow-hidden">
-                    <Image
-                      src="/about-me-image.png"
-                      alt="About Julia Nascimento"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                      priority={false}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </FadeInUp>
         </div>
       </section>
 
-      {/* Work Section */}
+      {/* Selected Projects Section */}
       <section className="w-full bg-[#F5F5F5] py-32 md:py-40 px-6 md:px-16">
         <div className="max-w-[1728px] mx-auto">
           <StaggerContainer className="w-full flex flex-col items-start gap-16 md:gap-20">
@@ -277,18 +195,24 @@ export default function Home() {
               <div className="w-full flex flex-col items-start gap-4">
                 <p className="w-full text-heading-2 text-[#E75C3B]">WORK</p>
                 <h2 className="w-full text-display-large text-[#262626]">
-                  Projects overview
+                  Selected Projects
                 </h2>
+                <p className="w-full text-body-large text-[#262626] leading-relaxed max-w-2xl">
+                  I believe this projects shows a combination of my current skills and interests
+                </p>
               </div>
             </FadeInUp>
 
-            {/* Projects Grid */}
+            {/* Selected Projects Grid - Only highlight="HIGHLIGHT" */}
             <div className="w-full flex flex-row flex-wrap gap-6">
-              {projects.map((project, idx) => (
-                <FadeInUp key={project.slug} delay={idx * 0.05}>
-                  <ProjectCard project={project} />
-                </FadeInUp>
-              ))}
+              {projects
+                .filter((project) => project.highlight === "HIGHLIGHT")
+                .slice(0, 3)
+                .map((project, idx) => (
+                  <FadeInUp key={project.slug} delay={idx * 0.05}>
+                    <ProjectCard project={project} />
+                  </FadeInUp>
+                ))}
             </div>
 
             <FadeInUp>
