@@ -76,6 +76,151 @@ export default function About() {
               </div>
             </div>
           </FadeInUp>
+
+          {/* Design Community Section */}
+          <FadeInUp delay={0.8}>
+            <div className="w-full flex flex-col items-start gap-8">
+              <div className="flex flex-col items-start gap-4">
+                <p className="text-heading-2 text-[#E75C3B]">DESIGN COMMUNITY</p>
+                <h2 className="text-display-medium font-medium text-[#262626] leading-tight">
+                  Sharing knowledge<br />and mentoring
+                </h2>
+              </div>
+
+              <div className="flex flex-col items-start gap-6 w-full max-w-4xl">
+                {/* Podcasts */}
+                <div className="flex flex-col items-start gap-4 w-full">
+                  <p className="text-heading-3 text-[#262626] font-medium">Podcasts</p>
+                  <div className="flex flex-col items-start gap-3 w-full">
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Podvagas Podcast
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Leading a podcast about junior designers migrating to UX
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Clip content Podcast
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        A podcast I've created to talk about design career and share tips
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Podcast guest
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        UX Design e Carreira Internacional - Design and career (Portuguese)
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Guest speaker
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        UX and impact of communities and collaboration
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Speaking & Events */}
+                <div className="flex flex-col items-start gap-4 w-full">
+                  <p className="text-heading-3 text-[#262626] font-medium">Speaking & Events</p>
+                  <div className="flex flex-col items-start gap-3 w-full">
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Design System Event
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Invited to talk about product libraries at Booking.com
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Design conference
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Organise Layers conference for 500+ designers
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Writing & Content */}
+                <div className="flex flex-col items-start gap-4 w-full">
+                  <p className="text-heading-3 text-[#262626] font-medium">Writing & Content</p>
+                  <div className="flex flex-col items-start gap-3 w-full">
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Medium writer
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Articles about design and Figma @julianascimentto
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Community Leadership */}
+                <div className="flex flex-col items-start gap-4 w-full">
+                  <p className="text-heading-3 text-[#262626] font-medium">Community Leadership</p>
+                  <div className="flex flex-col items-start gap-3 w-full">
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Figma Community Lead/Advocate
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Friends of Figma Portugal and Amsterdam
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Member of Vagas UX
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Leading a podcast about junior designers migrating to UX
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Teaching & Mentoring */}
+                <div className="flex flex-col items-start gap-4 w-full">
+                  <p className="text-heading-3 text-[#262626] font-medium">Teaching & Mentoring</p>
+                  <div className="flex flex-col items-start gap-3 w-full">
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> UX Design Teacher
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        EDIT, Flag and Tangível - Designing my own UX Design and Design System courses
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Design System Teacher
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Tangível Academy in Lisbon, Portugal
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1 w-full">
+                      <p className="text-body-large text-[#6D6A7D]">
+                        <span className="text-[#262626]">/</span> Co-lead initiative
+                      </p>
+                      <p className="text-body-large text-[#6D6A7D] ml-4">
+                        Share UX work inside the Design community at Booking.com
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeInUp>
         </div>
       </div>
     </div>

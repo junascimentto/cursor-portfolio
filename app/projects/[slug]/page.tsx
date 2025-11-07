@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getProjectBySlug, getAllProjectSlugs } from "@/data/projects";
+import React from "react";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -173,26 +174,25 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
-            {/* Summary Section */}
+            {/* Summary Section - Combined Problem, What I did, and Role */}
             <div className="flex flex-col gap-6">
               <div className="max-w-4xl">
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-2">
-                    <p className="text-heading-3 text-[#262626] font-medium">Problem</p>
-                    {project.summary?.problem ? (
+                <div className="flex flex-col gap-6">
+                  {/* Problem - Use summary.problem, project.problem, or scenario (whichever exists) */}
+                  {(project.summary?.problem || project.problem || project.scenario) && (
+                    <div className="flex flex-col gap-2">
+                      <p className="text-heading-3 text-[#262626] font-medium">Problem</p>
                       <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                        {project.summary.problem}
+                        {project.summary?.problem || project.problem || project.scenario}
                       </p>
-                    ) : (
-                      <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
-                        Content coming soon...
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <p className="text-heading-3 text-[#262626] font-medium">What I did</p>
-                    {project.summary?.whatIDid ? (
-                      Array.isArray(project.summary.whatIDid) ? (
+                    </div>
+                  )}
+                  
+                  {/* What I did */}
+                  {project.summary?.whatIDid && (
+                    <div className="flex flex-col gap-2">
+                      <p className="text-heading-3 text-[#262626] font-medium">What I did</p>
+                      {Array.isArray(project.summary.whatIDid) ? (
                         <ul className="flex flex-col gap-3">
                           {project.summary.whatIDid.map((item, idx) => (
                             <li key={idx} className="flex items-start gap-3">
@@ -209,36 +209,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <p className="text-body-large text-[#1A1A1A] leading-relaxed">
                           {project.summary.whatIDid}
                         </p>
-                      )
-                    ) : (
-                      <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
-                        Content coming soon...
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <p className="text-heading-3 text-[#262626] font-medium">Outcomes</p>
-                    {project.outcomes && project.outcomes.length > 0 ? (
-                      <ul className="flex flex-col gap-3">
-                        {project.outcomes.map((outcome, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
-                            <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
-                              {outcome}
-                            </p>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : project.summary?.impact ? (
-                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                        {project.summary.impact}
-                      </p>
-                    ) : (
-                      <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
-                        Content coming soon...
-                      </p>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -294,23 +267,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
-            {/* My Role Section */}
-            <div className="flex flex-col gap-6">
-              <h2 className="text-heading-2 text-[#262626]">My Role</h2>
-              <div className="max-w-4xl">
-                {project.role ? (
-                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.role.split(/\*\*(.*?)\*\*/).map((part, i) =>
-                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
-                    )}
-                  </p>
-                ) : (
-                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
-                    Content coming soon...
-                  </p>
-                )}
-              </div>
-            </div>
 
             {/* My Key Contribution Section */}
             <div className="flex flex-col gap-6">
@@ -336,10 +292,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
 
-            {/* Metrics and Results Section */}
+            {/* Metrics and Results Section - Consolidated with Outcomes */}
             <div className="flex flex-col gap-6">
               <h2 className="text-heading-2 text-[#262626]">
-                {project.results?.title || "Metrics & Results"}
+                {project.results?.title || "Results & Impact"}
               </h2>
               <div className="w-full">
                 {/* Results Cards - If available, show these prominently */}
@@ -363,7 +319,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 ) : null}
                 
-                {/* Metrics List */}
+                {/* Metrics List or Outcomes - Show whichever is available */}
                 {project.metrics && project.metrics.length > 0 ? (
                   <ul className="flex flex-col gap-4">
                     {project.metrics.map((metric, idx) => (
@@ -377,11 +333,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       </li>
                     ))}
                   </ul>
-                ) : (
-                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
-                    Content coming soon...
+                ) : project.outcomes && project.outcomes.length > 0 ? (
+                  <ul className="flex flex-col gap-4">
+                    {project.outcomes.map((outcome, idx) => (
+                      <li key={idx} className="flex items-start gap-4">
+                        <span className="text-[#549082] text-heading-3 mt-1">✅</span>
+                        <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
+                          {outcome}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                ) : project.summary?.impact ? (
+                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                    {project.summary.impact.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                    )}
                   </p>
-                )}
+                ) : null}
               </div>
             </div>
 
@@ -469,39 +438,107 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
-            {/* Scenario Section */}
-            <div className="flex flex-col gap-6">
-              <h2 className="text-heading-2 text-[#262626]">
-                {project.scenario 
-                  ? "The context: high-stakes project with tight deadlines and evolving requirements"
-                  : "Scenario"}
-              </h2>
-              <div className="max-w-4xl">
-                {project.scenario ? (
-                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.scenario}
-                  </p>
-                ) : (
-                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
-                    Content coming soon...
-                  </p>
-                )}
-              </div>
-            </div>
+            {/* How Might We Section - Centered Quote Style */}
+            {(() => {
+              // Extract HMW from problem statement
+              const extractHMW = (text: string | undefined): string | null => {
+                if (!text) return null;
+                const hmwMatch = text.match(/How might we (.+?)(?:\.|$)/i);
+                return hmwMatch ? hmwMatch[1].trim() : null;
+              };
+              
+              // Format the HMW statement (no bold emphasis)
+              const formatHMW = (text: string): React.ReactNode => {
+                return text;
+              };
+              
+              const hmwText = extractHMW(project.summary?.problem) || extractHMW(project.problem);
+              
+              return hmwText ? (
+                <div className="w-full flex flex-col items-center gap-6 py-12 md:py-16">
+                  <div className="max-w-4xl mx-auto text-center px-6">
+                    <blockquote className="text-heading-2 md:text-heading-2 text-[#262626] font-normal leading-relaxed italic border-l-4 border-[#E75C3B] pl-8 pr-8 py-6">
+                      How might we {formatHMW(hmwText)}
+                    </blockquote>
+                  </div>
+                </div>
+              ) : null;
+            })()}
 
-            {/* Problem Framing Section */}
+            {/* Problem Framing Section - Combined with Scenario context */}
             <div className="flex flex-col gap-6">
               <h2 className="text-heading-2 text-[#262626]">
                 {project.problemFraming 
                   ? "How I structured the problem space to guide design decisions"
+                  : project.scenario
+                  ? "The context: high-stakes project with tight deadlines and evolving requirements"
                   : "Problem Framing"}
               </h2>
               <div className="max-w-4xl">
                 {project.problemFraming ? (
+                  (() => {
+                    // Parse the problem framing text to extract key concepts
+                    const text = project.problemFraming;
+                    
+                    // Look for pattern: "I framed the challenge around [number] core needs: [concept1], [concept2], and [concept3]. [explanation]"
+                    const needsMatch = text.match(/I framed the challenge around (?:three|two|four|five|several) core needs?:\s*(.+?)(?:\.\s+|$)/i);
+                    
+                    if (needsMatch) {
+                      // Extract the concepts part
+                      const conceptsText = needsMatch[1];
+                      // Split by comma and "and" to get individual concepts
+                      const concepts = conceptsText
+                        .split(/,\s*(?:and\s+)?/)
+                        .map(c => c.trim())
+                        .filter(c => c.length > 0);
+                      
+                      // Extract the explanation (everything after the concepts)
+                      const explanationMatch = text.match(/I framed the challenge around .+?\.\s+(.+)/i);
+                      const explanation = explanationMatch ? explanationMatch[1] : null;
+                      
+                      return (
+                        <div className="flex flex-col gap-4">
+                          {/* Simple list of concepts */}
+                          <ul className="flex flex-col gap-3">
+                            {concepts.map((concept, idx) => {
+                              const fullConcept = concept.replace(/\*\*/g, '');
+                              return (
+                                <li key={idx} className="flex items-start gap-3">
+                                  <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                                  <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
+                                    {fullConcept.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                                    )}
+                                  </p>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                          
+                          {/* Explanation below the list */}
+                          {explanation && (
+                            <p className="text-body-large text-[#1A1A1A] leading-relaxed mt-2">
+                              {explanation.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                                i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                              )}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    }
+                    
+                    // Fallback to original format if pattern doesn't match
+                    return (
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        {text.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                          i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                        )}
+                      </p>
+                    );
+                  })()
+                ) : project.scenario ? (
                   <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.problemFraming.split(/\*\*(.*?)\*\*/).map((part, i) =>
-                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
-                    )}
+                    {project.scenario}
                   </p>
                 ) : (
                   <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
@@ -586,11 +623,36 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </h2>
               <div className="max-w-4xl">
                 {project.systemsThinking ? (
-                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.systemsThinking.split(/\*\*(.*?)\*\*/).map((part, i) =>
-                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
-                    )}
-                  </p>
+                  <div className="flex flex-col gap-6">
+                    {/* Two-column layout for better readability */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                      <div className="flex flex-col gap-4">
+                        <p className="text-heading-3 text-[#262626] font-medium">Approach</p>
+                        <div className="text-body-large text-[#1A1A1A] leading-relaxed">
+                          {project.systemsThinking.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                            i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-4">
+                        <p className="text-heading-3 text-[#262626] font-medium">Benefits</p>
+                        <ul className="flex flex-col gap-3 text-body-large text-[#1A1A1A] leading-relaxed">
+                          <li className="flex items-start gap-3">
+                            <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                            <span>Reduces technical debt through reusable components</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                            <span>Enables faster iterations and scalability</span>
+                          </li>
+                          <li className="flex items-start gap-3">
+                            <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                            <span>Creates enterprise-scale solutions</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
                     Content coming soon...
@@ -603,7 +665,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="flex flex-col gap-6">
               <h2 className="text-heading-2 text-[#262626]">
                 {project.collaboration 
-                  ? "Influencing a design-led product development"
+                  ? "Navigating complexity through cross-functional collaboration"
                   : "Collaboration"}
               </h2>
               <div className="max-w-4xl">
@@ -621,57 +683,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
 
-            {/* Impact Section */}
-            {(project.impact || (project.pressQuotes && project.pressQuotes.length > 0)) && (
+            {/* Press Quotes Section - Only show if available */}
+            {project.pressQuotes && project.pressQuotes.length > 0 && (
               <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">Impact</h2>
+                <h2 className="text-heading-2 text-[#262626]">Press & Recognition</h2>
                 <div className="max-w-4xl">
-                  {project.impact && (
-                    <>
-                      {typeof project.impact === "string" ? (
-                        <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                          {project.impact.split(/\*\*(.*?)\*\*/).map((part, i) =>
-                            i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
-                          )}
+                  <div className="flex flex-col gap-6">
+                    {project.pressQuotes.map((quote, idx) => (
+                      <div key={idx} className="flex flex-col gap-2">
+                        <blockquote className="text-body-large text-[#1A1A1A] leading-relaxed italic border-l-4 border-[#E75C3B] pl-6">
+                          "{quote.quote}"
+                        </blockquote>
+                        <p className="text-body-regular text-[#6B6B6B] font-medium">
+                          — {quote.source}
                         </p>
-                      ) : (
-                        <ul className="flex flex-col gap-4">
-                          {project.impact.map((impact, idx) => (
-                            <li key={idx} className="flex items-start gap-4">
-                              <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
-                              <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
-                                {impact}
-                              </p>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </>
-                  )}
-
-                  {/* Press Quotes */}
-                  {project.pressQuotes && project.pressQuotes.length > 0 && (
-                    <div className={`flex flex-col gap-6 ${project.impact ? 'mt-8' : ''}`}>
-                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                        The Booking.com app launch on the OpenAI platform received significant attention and praise, affirming its high quality and strategic value.
-                      </p>
-                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                        Media Response: The integration was recognized immediately by major tech and travel press for its innovative approach to AI-powered travel planning.
-                      </p>
-                      <div className="flex flex-col gap-6">
-                        {project.pressQuotes.map((quote, idx) => (
-                          <div key={idx} className="flex flex-col gap-2">
-                            <blockquote className="text-body-large text-[#1A1A1A] leading-relaxed italic border-l-4 border-[#E75C3B] pl-6">
-                              "{quote.quote}"
-                            </blockquote>
-                            <p className="text-body-regular text-[#6B6B6B] font-medium">
-                              — {quote.source}
-                            </p>
-                          </div>
-                        ))}
                       </div>
-                    </div>
-                  )}
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
