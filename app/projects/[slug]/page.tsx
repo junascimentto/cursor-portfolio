@@ -132,7 +132,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   )}
                   {project.completedDate && (
                     <div className="flex items-center gap-2">
-                      <span className="text-[#6D6A7D]">Completed:</span>
                       <span className="text-[#262626] font-medium">{project.completedDate}</span>
                     </div>
                   )}
@@ -174,15 +173,234 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
+            {/* Summary Section */}
+            <div className="flex flex-col gap-6">
+              <div className="max-w-4xl">
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2">
+                    <p className="text-heading-3 text-[#262626] font-medium">Problem</p>
+                    {project.summary?.problem ? (
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        {project.summary.problem}
+                      </p>
+                    ) : (
+                      <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                        Content coming soon...
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-heading-3 text-[#262626] font-medium">What I did</p>
+                    {project.summary?.whatIDid ? (
+                      Array.isArray(project.summary.whatIDid) ? (
+                        <ul className="flex flex-col gap-3">
+                          {project.summary.whatIDid.map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-3">
+                              <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                              <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
+                                {item.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                                  i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                                )}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                          {project.summary.whatIDid}
+                        </p>
+                      )
+                    ) : (
+                      <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                        Content coming soon...
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-heading-3 text-[#262626] font-medium">Outcomes</p>
+                    {project.outcomes && project.outcomes.length > 0 ? (
+                      <ul className="flex flex-col gap-3">
+                        {project.outcomes.map((outcome, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                            <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
+                              {outcome}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : project.summary?.impact ? (
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        {project.summary.impact}
+                      </p>
+                    ) : (
+                      <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                        Content coming soon...
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Before and After Images - Edge to Edge */}
+              {project.beforeAfter && (
+                <div className="w-full -mx-6 md:-mx-16">
+                  <div className="flex flex-col gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 md:px-16">
+                      {/* Before Image */}
+                      <div className="flex flex-col gap-4">
+                        <p className="text-heading-3 text-[#262626] font-medium">Before</p>
+                        <div className="w-full aspect-[4/3] relative bg-[#EBEBEB] overflow-hidden">
+                          {project.beforeAfter.before ? (
+                            <Image
+                              src={project.beforeAfter.before}
+                              alt="Before"
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <span className="text-[#A2A2A2] text-body-small">Before Image</span>
+                            </div>
+                          )}
+                        </div>
+                        <p className="text-body-regular text-[#6B6B6B]">Text only response</p>
+                      </div>
+
+                      {/* After Image */}
+                      <div className="flex flex-col gap-4">
+                        <p className="text-heading-3 text-[#262626] font-medium">After</p>
+                        <div className="w-full aspect-[4/3] relative bg-[#EBEBEB] overflow-hidden">
+                          {project.beforeAfter.after ? (
+                            <Image
+                              src={project.beforeAfter.after}
+                              alt="After"
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <span className="text-[#A2A2A2] text-body-small">After Image</span>
+                            </div>
+                          )}
+                        </div>
+                        <p className="text-body-regular text-[#6B6B6B]">Carousel with images and facilities</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* My Role Section */}
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">My Role</h2>
+              <div className="max-w-4xl">
+                {project.role ? (
+                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                    {project.role.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                    )}
+                  </p>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* My Key Contribution Section */}
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">My key contribution</h2>
+              <div className="max-w-4xl">
+                {project.keyContribution ? (
+                  <div className="flex flex-col gap-4">
+                    <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                      {project.keyContribution.description}
+                    </p>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-heading-3 text-[#262626] font-medium">Highlight:</p>
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        {project.keyContribution.highlight}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Metrics and Results Section */}
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">
+                {project.results?.title || "Metrics & Results"}
+              </h2>
+              <div className="w-full">
+                {/* Results Cards - If available, show these prominently */}
+                {project.results && project.results.metrics.length > 0 ? (
+                  <div className="flex flex-row flex-wrap items-start gap-8 md:gap-12 mb-8">
+                    {project.results.metrics.map((metric, idx) => (
+                      <div key={idx} className="flex flex-col items-start gap-4 flex-1 min-w-[250px] max-w-[323px]">
+                        <div className="text-display-medium text-black font-extrabold">
+                          {metric.value}
+                        </div>
+                        <div className="text-heading-3 text-[#E75C3B]">
+                          {metric.label}
+                        </div>
+                        {metric.description && (
+                          <div className="text-body-large text-[#595959] w-full">
+                            {metric.description}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+                
+                {/* Metrics List */}
+                {project.metrics && project.metrics.length > 0 ? (
+                  <ul className="flex flex-col gap-4">
+                    {project.metrics.map((metric, idx) => (
+                      <li key={idx} className="flex items-start gap-4">
+                        <span className="text-[#549082] text-heading-3 mt-1">✅</span>
+                        <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
+                          {metric.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                            i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                          )}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
+              </div>
+            </div>
+
             {/* Overview and Team Section - Magazine Style Two Columns */}
             <div className="w-full flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
               {/* Overview Section - Left Column */}
-              {project.overview && (
+            {project.overview && (
                 <div className="w-full lg:w-[60%] flex flex-col gap-6">
-                  <h2 className="text-heading-2 text-[#262626]">Overview</h2>
-                  <div className="max-w-4xl">
-                    <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                      {project.overview}
+                <h2 className="text-heading-2 text-[#262626]">Overview</h2>
+                  <div className="max-w-4xl flex flex-col gap-4">
+                    {project.overview.split('\n\n').map((paragraph, idx) => (
+                      <p key={idx} className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        {paragraph.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                          i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                        )}
+                      </p>
+                    ))}
+                    <p className="text-body-small text-[#6B6B6B] leading-relaxed italic">
+                      To comply with my non-disclosure agreement, I have omitted and obfuscated confidential information in this case study. All information in this case study is my own and does not necessarily reflect the views of Booking.com.
                     </p>
                   </div>
                 </div>
@@ -208,10 +426,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                           <span className="text-[12px] font-bold text-white leading-[16px]">
                             +{project.team.count}
                           </span>
-                        </div>
-                      </div>
-                    )}
-                    
+                </div>
+              </div>
+            )}
+
                     {/* Individual Member Avatars */}
                     {project.team.members && project.team.members.length > 0 && (() => {
                       const members = project.team.members!;
@@ -251,168 +469,305 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
 
-            {/* My Role Section */}
-            {project.role && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">My Role</h2>
-                <div className="max-w-4xl">
-                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.role}
-                  </p>
-                </div>
-              </div>
-            )}
-
             {/* Scenario Section */}
-            {project.scenario && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">SCENARIO</h2>
-                <div className="max-w-4xl">
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">
+                {project.scenario 
+                  ? "The context: high-stakes project with tight deadlines and evolving requirements"
+                  : "Scenario"}
+              </h2>
+              <div className="max-w-4xl">
+                {project.scenario ? (
                   <p className="text-body-large text-[#1A1A1A] leading-relaxed">
                     {project.scenario}
                   </p>
-                </div>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
               </div>
-            )}
+            </div>
 
             {/* Problem Framing Section */}
-            {project.problemFraming && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">Problem Framing</h2>
-                <div className="max-w-4xl">
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">
+                {project.problemFraming 
+                  ? "How I structured the problem space to guide design decisions"
+                  : "Problem Framing"}
+              </h2>
+              <div className="max-w-4xl">
+                {project.problemFraming ? (
                   <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.problemFraming}
+                    {project.problemFraming.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                    )}
                   </p>
-                </div>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
               </div>
-            )}
+            </div>
+
+            {/* Information Architecture Section */}
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">
+                {project.informationArchitecture 
+                  ? "Using user flows and IA to bring early clarity for the team and define the MVP"
+                  : "Information Architecture"}
+              </h2>
+              <div className="max-w-4xl">
+                {project.informationArchitecture ? (
+                  <div className="flex flex-col gap-6">
+                    {project.informationArchitecture.description && (
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        {project.informationArchitecture.description.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                          i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                        )}
+                      </p>
+                    )}
+                    <div className="flex flex-col gap-8">
+                      {/* User Flow Image */}
+                      {project.informationArchitecture.userFlowImage && (
+                        <div className="flex flex-col gap-4">
+                          <div className="w-full aspect-[16/9] relative bg-[#EBEBEB] overflow-hidden p-6">
+                            <Image
+                              src={project.informationArchitecture.userFlowImage}
+                              alt="User Flow"
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 100vw, 100%"
+                            />
+                          </div>
+                          {project.informationArchitecture.userFlowDescription && (
+                            <p className="text-body-regular text-[#6B6B6B]">
+                              {project.informationArchitecture.userFlowDescription}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                      {/* Information Architecture Image */}
+                      {project.informationArchitecture.iaImage && (
+                        <div className="flex flex-col gap-4">
+                          <div className="w-full aspect-[16/9] relative bg-[#EBEBEB] overflow-hidden">
+                            <Image
+                              src={project.informationArchitecture.iaImage}
+                              alt="Information Architecture"
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 100vw, 100%"
+                            />
+                          </div>
+                          {project.informationArchitecture.iaDescription && (
+                            <p className="text-body-regular text-[#6B6B6B]">
+                              {project.informationArchitecture.iaDescription}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
+              </div>
+            </div>
 
             {/* Systems Thinking Section */}
-            {project.systemsThinking && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">Systems Thinking</h2>
-                <div className="max-w-4xl">
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">
+                {project.systemsThinking 
+                  ? "Designing modular, scalable components that integrate across the product ecosystem"
+                  : "Systems Thinking"}
+              </h2>
+              <div className="max-w-4xl">
+                {project.systemsThinking ? (
                   <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.systemsThinking}
+                    {project.systemsThinking.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                    )}
                   </p>
-                </div>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
               </div>
-            )}
+            </div>
 
             {/* Collaboration Section */}
-            {project.collaboration && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">Collaboration</h2>
-                <div className="max-w-4xl">
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">
+                {project.collaboration 
+                  ? "Influencing a design-led product development"
+                  : "Collaboration"}
+              </h2>
+              <div className="max-w-4xl">
+                {project.collaboration ? (
                   <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.collaboration}
+                    {project.collaboration.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                    )}
                   </p>
-                </div>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
               </div>
-            )}
+            </div>
 
             {/* Impact Section */}
-            {project.impact && (
+            {(project.impact || (project.pressQuotes && project.pressQuotes.length > 0)) && (
               <div className="flex flex-col gap-6">
                 <h2 className="text-heading-2 text-[#262626]">Impact</h2>
                 <div className="max-w-4xl">
-                  {typeof project.impact === "string" ? (
-                    <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                      {project.impact}
-                    </p>
-                  ) : (
-                    <ul className="flex flex-col gap-4">
-                      {project.impact.map((impact, idx) => (
-                        <li key={idx} className="flex items-start gap-4">
-                          <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
-                          <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
-                            {impact}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
+                  {project.impact && (
+                    <>
+                      {typeof project.impact === "string" ? (
+                        <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                          {project.impact.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                            i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                          )}
+                        </p>
+                      ) : (
+                        <ul className="flex flex-col gap-4">
+                          {project.impact.map((impact, idx) => (
+                            <li key={idx} className="flex items-start gap-4">
+                              <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
+                              <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
+                                {impact}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  )}
+
+                  {/* Press Quotes */}
+                  {project.pressQuotes && project.pressQuotes.length > 0 && (
+                    <div className={`flex flex-col gap-6 ${project.impact ? 'mt-8' : ''}`}>
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        The Booking.com app launch on the OpenAI platform received significant attention and praise, affirming its high quality and strategic value.
+                      </p>
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        Media Response: The integration was recognized immediately by major tech and travel press for its innovative approach to AI-powered travel planning.
+                      </p>
+                      <div className="flex flex-col gap-6">
+                        {project.pressQuotes.map((quote, idx) => (
+                          <div key={idx} className="flex flex-col gap-2">
+                            <blockquote className="text-body-large text-[#1A1A1A] leading-relaxed italic border-l-4 border-[#E75C3B] pl-6">
+                              "{quote.quote}"
+                            </blockquote>
+                            <p className="text-body-regular text-[#6B6B6B] font-medium">
+                              — {quote.source}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
             )}
 
-            {/* Legacy: Keep Outcomes for backward compatibility if Impact not provided */}
-            {project.outcomes && project.outcomes.length > 0 && !project.impact && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">Outcomes</h2>
-                <div className="max-w-4xl">
-                  <ul className="flex flex-col gap-4">
-                    {project.outcomes.map((outcome, idx) => (
-                      <li key={idx} className="flex items-start gap-4">
-                        <span className="text-[#E75C3B] text-heading-3 mt-1">•</span>
-                        <p className="text-body-large text-[#1A1A1A] flex-1">
-                          {outcome}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
-
-            {/* Metrics Section */}
-            {project.metrics && project.metrics.length > 0 && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">Metrics</h2>
-                <div className="max-w-4xl">
-                  <ul className="flex flex-col gap-4">
-                    {project.metrics.map((metric, idx) => (
-                      <li key={idx} className="flex items-start gap-4">
-                        <span className="text-[#549082] text-heading-3 mt-1">✅</span>
-                        <p className="text-body-large text-[#1A1A1A] flex-1 leading-relaxed">
-                          {metric}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
-
-            {/* Results Section - First 10 Days Results */}
-            {project.results && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#E75C3B]">
-                  {project.results.title}
-                </h2>
-                <div className="w-full">
-                  <div className="flex flex-row flex-wrap items-start gap-8 md:gap-12">
-                    {project.results.metrics.map((metric, idx) => (
-                      <div key={idx} className="flex flex-col items-start gap-4 flex-1 min-w-[250px] max-w-[323px]">
-                        <div className="text-display-medium text-black font-extrabold">
-                          {metric.value}
-                        </div>
-                        <div className="text-heading-3 text-[#E75C3B]">
-                          {metric.label}
-                        </div>
-                        {metric.description && (
-                          <div className="text-body-large text-[#595959] w-full">
-                            {metric.description}
+            {/* Challenges and Trade-offs Section */}
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">Challenges and trade-offs</h2>
+              <div className="max-w-4xl">
+                {project.challenges ? (
+                  <div className="flex flex-col gap-6">
+                    {project.challenges.intro && (
+                      <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                        {project.challenges.intro}
+                      </p>
+                    )}
+                    {project.challenges.subtitle && (
+                      <p className="text-heading-3 text-[#262626] font-medium">
+                        {project.challenges.subtitle}
+                      </p>
+                    )}
+                    {project.challenges.items && project.challenges.items.length > 0 && (
+                      <div className="flex flex-col gap-6">
+                        {project.challenges.items.map((item, idx) => (
+                          <div key={idx} className="flex flex-row gap-4">
+                            {/* Simple Number */}
+                            <div className="flex-shrink-0">
+                              <span className="text-body-regular text-[#262626] font-medium">
+                                {idx + 1}.
+                              </span>
+                            </div>
+                            {/* Content */}
+                            <div className="flex flex-col gap-3 flex-1">
+                              <p className="text-body-large text-[#262626] font-medium">
+                                {item.title}
+                              </p>
+                              <p className="text-body-regular text-[#1A1A1A] leading-relaxed">
+                                {item.description}
+                              </p>
+                            </div>
                           </div>
-                        )}
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
+              </div>
+                </div>
+
+            {/* What I Learnt Section */}
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">What I learnt</h2>
+              <div className="max-w-4xl">
+                {project.whatILearnt ? (
+                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
+                    {project.whatILearnt.split(/\*\*(.*?)\*\*/).map((part, i) =>
+                      i % 2 === 1 ? <strong key={i} className="font-bold">{part}</strong> : part
+                    )}
+                  </p>
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Feedback Section - Last Section */}
+            <div className="flex flex-col gap-6">
+              <h2 className="text-heading-2 text-[#262626]">Feedback</h2>
+              <div className="max-w-4xl">
+                {project.feedback && project.feedback.length > 0 ? (
+                  <div className="flex flex-col gap-8">
+                    {project.feedback.map((feedbackItem, idx) => (
+                      <div key={idx} className="flex flex-col gap-4">
+                        <p className="text-heading-3 text-[#262626] font-medium">
+                          {feedbackItem.role}
+                        </p>
+                        <blockquote className="text-body-large text-[#1A1A1A] leading-relaxed whitespace-pre-line border-l-4 border-[#E75C3B] pl-6 italic">
+                          "{feedbackItem.text.split(/\*\*(.*?)\*\*/).map((part, i) => 
+                            i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+                          )}"
+                        </blockquote>
                       </div>
                     ))}
                   </div>
-                </div>
-              </div>
-            )}
-
-            {/* Reflection Section */}
-            {project.reflection && (
-              <div className="flex flex-col gap-6">
-                <h2 className="text-heading-2 text-[#262626]">Reflection</h2>
-                <div className="max-w-4xl">
-                  <p className="text-body-large text-[#1A1A1A] leading-relaxed">
-                    {project.reflection}
+                ) : (
+                  <p className="text-body-large text-[#A2A2A2] leading-relaxed italic">
+                    Content coming soon...
                   </p>
-                </div>
+                )}
               </div>
-            )}
+            </div>
 
 
             {/* Navigation Links */}
