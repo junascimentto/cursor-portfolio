@@ -71,6 +71,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  // Get next project
+  const allSlugs = getAllProjectSlugs();
+  const currentIndex = allSlugs.indexOf(slug);
+  const nextIndex = currentIndex < allSlugs.length - 1 ? currentIndex + 1 : 0; // Wrap around to first project
+  const nextProjectSlug = allSlugs[nextIndex];
+  const nextProject = getProjectBySlug(nextProjectSlug);
+
   return (
     <div className="w-full bg-white">
       {/* Hero Image Section */}
@@ -799,13 +806,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
 
             {/* Navigation Links */}
-            <div className="flex flex-row items-center gap-8 pt-8 border-t border-gray-200">
+            <div className="flex flex-row items-center justify-between gap-8 pt-8 border-t border-gray-200">
               <Link
                 href="/projects"
                 className="text-body-large text-[#6D6A7D] hover:text-[#262626] transition-colors"
               >
                 ← Back to Projects
               </Link>
+              {nextProject && (
+                <Link
+                  href={`/projects/${nextProjectSlug}`}
+                  className="text-body-large text-[#6D6A7D] hover:text-[#262626] transition-colors inline-flex items-center gap-2"
+                >
+                  Next: {nextProject.title} →
+                </Link>
+              )}
             </div>
           </div>
         </div>

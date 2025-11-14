@@ -221,11 +221,11 @@ export const projects: Project[] = [
   },
   {
     slug: "white-label-ai-builder",
-    title: "Enterprise White Label Platform - Product Strategy Lead",
+    title: "Enterprise AI White Label Platform - Product Strategy Lead",
     description: "Strategic product vision for scalable B2B2C white label travel platform",
     tags: ["AI/ML", "Enterprise", "White Label", "Strategy", "B2B2C"],
     image: "/projects/white-label-thumb.png",
-    heroImage: "/projects/white-label-thumb.png",
+    heroImage: "/projects/whitelabel-hero.png",
     overview: "Booking.com's Enterprise White Label platform serves major enterprise partners including airlines, banks, and loyalty programs—a **$2.2B TTV opportunity** with 15 main prospects and 7 lost/at-risk deals. The Partnerships department needed to compete in the B2B2C white label market against established players like Expedia, Rocket Travel by Agoda, and Travel Payouts. However, the existing solution was only **70% complete**—a half-baked platform requiring high maintenance with 1,797 custom hybrid pages for 557 partners that weren't connected to the main platform. With infrastructure deprecation looming, the department needed a strategic vision for a scalable Enterprise White Label platform that could enable full customization while maintaining operational efficiency—all within a competitive market where partners demanded brand continuity across the entire customer journey.",
     role: "Product Designer - Led product strategy, vision design, and user journey mapping for Enterprise White Label",
     summary: {
@@ -296,7 +296,7 @@ export const projects: Project[] = [
     description: "Reduced error 30%. Approval of invoices 60% faster.",
     tags: ["Finance", "Workflow", "Enterprise"],
     image: "/projects/invoices-thumb.png",
-    heroImage: "/projects/invoices-thumb.png",
+    heroImage: "/projects/invoices-hero.png",
     overview: "The Finance department at Booking.com processes thousands of invoices monthly across multiple teams and approval chains. Finance teams were spending **5 days on average** to approve invoices, with high error rates and frequent support tickets creating operational bottlenecks. The existing workflow lacked automation, clear status visibility, and efficient decision-making tools, leading to delays in vendor payments and increased manual work. In a fast-paced environment where timely invoice processing directly impacts vendor relationships and cash flow, the department needed a redesigned workflow that could handle high volume while reducing errors and processing time.",
     role: "Product Designer - End-to-end ownership of invoice workflow redesign",
     summary: {
