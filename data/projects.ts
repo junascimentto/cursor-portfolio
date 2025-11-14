@@ -292,42 +292,45 @@ export const projects: Project[] = [
   },
   {
     slug: "invoices",
-    title: "Finance Tool end-to-end UX vision",
-    description: "Reduced error 30%. Approval of invoices 60% faster.",
-    tags: ["Finance", "Workflow", "Enterprise"],
+    title: "AI-Powered Finance & Campaign Management Tool - Lead UX Designer",
+    description: "Cut management time by 76%. Reduced error 30%. Approval of invoices 60% faster.",
+    tags: ["AI/ML", "Finance", "Workflow", "Enterprise", "Campaign Management"],
     image: "/projects/invoices-thumb.png",
     heroImage: "/projects/invoices-hero.png",
-    overview: "The Finance department at Booking.com processes thousands of invoices monthly across multiple teams and approval chains. Finance teams were spending **5 days on average** to approve invoices, with high error rates and frequent support tickets creating operational bottlenecks. The existing workflow lacked automation, clear status visibility, and efficient decision-making tools, leading to delays in vendor payments and increased manual work. In a fast-paced environment where timely invoice processing directly impacts vendor relationships and cash flow, the department needed a redesigned workflow that could handle high volume while reducing errors and processing time.",
-    role: "Product Designer - End-to-end ownership of invoice workflow redesign",
+    overview: "The Finance department at Booking.com processes thousands of invoices monthly across multiple teams and approval chains, while managing complex partner campaigns and fee structures. Finance teams were spending **5 days on average** to approve invoices, with high error rates and frequent support tickets creating operational bottlenecks. Campaign management required extensive manual oversight, consuming significant time and resources. The existing workflow lacked **AI-powered automation**, clear status visibility, and efficient decision-making tools, leading to delays in vendor payments and increased manual work. In a fast-paced environment where timely invoice processing and campaign management directly impact vendor relationships and cash flow, the department needed an **AI-driven solution** that could handle high volume while reducing errors and processing time.",
+    role: "Product Designer - End-to-end ownership of AI-powered finance and campaign management tool redesign",
     summary: {
-      problem: "Finance teams were spending 5 days on average to approve invoices, with high error rates and frequent support tickets. The existing workflow lacked automation, clear status visibility, and efficient decision-making tools. How might we redesign the invoice approval process to reduce processing time while improving accuracy?",
+      problem: "Finance teams were spending 5 days on average to approve invoices, with high error rates and frequent support tickets. Campaign management required extensive manual oversight, consuming significant time. The existing workflow lacked AI-powered automation, clear status visibility, and efficient decision-making tools. How might we leverage AI to redesign the invoice approval and campaign management processes to reduce processing time while improving accuracy?",
       whatIDid: [
+        "Designed an **AI-powered campaign management tool** that cut management time by 76% through intelligent automation and predictive insights",
         "Redesigned the **end-to-end invoice workflow** from submission to approval, reducing processing time from 5 days to 1 day",
-        "Implemented **automated validation** and smart routing that reduced manual review time by 60%",
-        "Designed **clear status indicators** and progress tracking that improved visibility across the approval chain",
-        "Created **streamlined decision-making interfaces** with contextual information and one-click approval actions",
-        "Established **error prevention patterns** including validation checks, confirmation steps, and audit trails",
-        "Conducted **user research** with finance teams to understand pain points and optimize workflows"
+        "Implemented **AI-driven automated validation** and smart routing that reduced manual review time by 60%",
+        "Created **AI-powered campaign timeline visualization** with predictive analytics for campaign performance and fee management",
+        "Designed **intelligent status indicators** and progress tracking that improved visibility across approval chains and campaign lifecycles",
+        "Built **streamlined decision-making interfaces** with AI-generated contextual information and one-click approval actions",
+        "Established **AI-enhanced error prevention patterns** including automated validation checks, confirmation steps, and audit trails",
+        "Conducted **user research** with finance teams to understand pain points and optimize workflows with AI capabilities"
       ],
-      impact: "Achieved 80% reduction in invoice approval time (5 days → 1 day), 30% reduction in errors, and 60% decrease in pending invoices. Support tickets dropped significantly and user satisfaction scores improved by 45%."
+      impact: "Achieved **76% reduction in campaign management time** through AI-powered automation. Additionally achieved 80% reduction in invoice approval time (5 days → 1 day), 30% reduction in errors, and 60% decrease in pending invoices. Support tickets dropped significantly and user satisfaction scores improved by 45%."
     },
-    scenario: "Finance teams were overwhelmed with invoice processing, taking 5 days on average to approve invoices. High error rates and lack of visibility were causing delays and frustration. We needed to redesign the workflow to be faster, more accurate, and easier to use.",
-    problem: "The invoice approval process was slow, error-prone, and lacked visibility. Finance teams couldn't see where invoices were in the approval chain, leading to delays and confusion. Manual validation and routing created bottlenecks and increased error rates.",
-    problemFraming: "I framed the challenge around three core needs: **speed** through automation and smart routing, **accuracy** through validation and error prevention, and **visibility** through clear status indicators and progress tracking. Using **user research** and workflow analysis, I identified that the key was automating routine validations while providing clear decision-making tools for exceptions, rather than requiring manual review of every invoice.",
-    systemsThinking: "I designed the workflow as a **modular, state-based system** where invoices moved through clear stages with automated validation at each step. The design used **status indicators** and **progress tracking** that were consistent across all views, enabling users to quickly understand where any invoice stood in the process. This systems-oriented approach reduced cognitive load and enabled parallel processing, allowing multiple team members to work on different invoices simultaneously without confusion.",
+    scenario: "Finance teams were overwhelmed with invoice processing and campaign management, taking 5 days on average to approve invoices and spending significant time manually managing partner campaigns. High error rates and lack of visibility were causing delays and frustration. We needed to leverage AI to redesign the workflow to be faster, more accurate, and easier to use.",
+    problem: "The invoice approval and campaign management processes were slow, error-prone, and lacked visibility. Finance teams couldn't see where invoices were in the approval chain or efficiently manage campaign timelines, leading to delays and confusion. Manual validation, routing, and campaign oversight created bottlenecks and increased error rates. The solution needed AI-powered automation to handle the complexity and volume.",
+    problemFraming: "I framed the challenge around three core needs: **speed** through AI-powered automation and intelligent routing, **accuracy** through AI-driven validation and error prevention, and **visibility** through clear status indicators and progress tracking. Using **user research** and workflow analysis, I identified that the key was leveraging **AI and machine learning** to automate routine validations and campaign management tasks while providing clear decision-making tools for exceptions, rather than requiring manual review of every invoice and campaign.",
+    systemsThinking: "I designed the workflow as a **modular, AI-enhanced state-based system** where invoices and campaigns moved through clear stages with AI-powered automated validation at each step. The design used **intelligent status indicators** and **progress tracking** that were consistent across all views, enabling users to quickly understand where any invoice or campaign stood in the process. The AI layer provided predictive insights and automated routine tasks, while the system architecture enabled parallel processing. This systems-oriented approach reduced cognitive load and enabled multiple team members to work on different invoices and campaigns simultaneously without confusion.",
     collaboration: "I worked closely with finance teams to understand their workflows and pain points, with product managers to prioritize automation features, and with engineers to design **validation rules** and **routing logic**. I facilitated **user sessions** to gather feedback on existing tools and observed user behavior to identify optimization opportunities. Regular syncs with stakeholders ensured the redesign met business requirements while improving user experience.",
     keyContribution: {
-      description: "Owned the end-to-end redesign of the invoice approval workflow, reducing processing time by 80% while improving accuracy and user satisfaction.",
-      highlight: "I redesigned the invoice workflow from the ground up, implementing automated validation and smart routing that reduced manual review time by 60%. By designing clear status indicators and streamlined decision-making interfaces, I enabled finance teams to process invoices 5× faster while reducing errors by 30%."
+      description: "Owned the end-to-end redesign of the AI-powered finance and campaign management tool, reducing campaign management time by 76% and invoice processing time by 80% while improving accuracy and user satisfaction.",
+      highlight: "I designed an AI-powered campaign management tool that cut management time by 76% and redesigned the invoice workflow from the ground up, implementing AI-driven automated validation and smart routing that reduced manual review time by 60%. By designing intelligent status indicators and streamlined decision-making interfaces with AI-generated insights, I enabled finance teams to process invoices 5× faster while reducing errors by 30%."
     },
     metrics: [
+      "**76% reduction** in campaign management time through AI-powered automation",
       "**80% reduction** in invoice approval time (5 days → 1 day)",
       "**30% reduction** in invoice processing errors",
       "**60% decrease** in pending invoices",
       "**45% improvement** in user satisfaction scores",
-      "**Significant drop** in support tickets related to invoice processing"
+      "**Significant drop** in support tickets related to invoice processing and campaign management"
     ],
-    impact: "The redesigned invoice workflow transformed how finance teams process invoices, reducing processing time by 80% and errors by 30%. The improved visibility and automation enabled teams to handle higher volumes without increasing headcount, demonstrating how **workflow design** and **automation** can drive operational efficiency in enterprise finance tools.",
+    impact: "The AI-powered finance and campaign management tool transformed how finance teams process invoices and manage campaigns, reducing campaign management time by 76% and invoice processing time by 80% while reducing errors by 30%. The AI-driven automation and improved visibility enabled teams to handle higher volumes without increasing headcount, demonstrating how **AI-powered workflow design** and **intelligent automation** can drive operational efficiency in enterprise finance tools.",
     challenges: {
       intro: "This project required balancing automation with flexibility, ensuring accuracy while maintaining speed.",
       subtitle: "Key Challenges and Solutions",
